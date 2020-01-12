@@ -12,7 +12,7 @@
 #include <FiniteStateMachine.h>
 #include <FSM_Alarm.h>
 
-
+// test Git Synchronization 
 
 // setup() runs once, when the device is first turned on.
 void setup() {
