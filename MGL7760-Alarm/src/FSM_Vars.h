@@ -74,12 +74,12 @@ void FSM_Vars_OnStt_Update()
                     return;
                 }
 
-            Serial.printlnf(" Temperature C: %0.2f  Temperature F: %0.2f    Humidity: %0.2f ", h,f,t);
+            //Serial.printlnf(" Temperature C: %0.2f  Temperature F: %0.2f    Humidity: %0.2f ", h,f,t);
 
             // Compute heat index
             // Must send in temp in Fahrenheit!
             
-            /*
+           
                 float hi = dht.getHeatIndex();
                 float dp = dht.getDewPoint();
                 float k = dht.getTempKelvin();
@@ -101,7 +101,9 @@ void FSM_Vars_OnStt_Update()
                 Serial.print(hi);
                 Serial.println(" *C");
                 Serial.println(Time.timeStr());        
-            */
+
+                Particle.publish("readings", String::format("{\"Hum(\%)\": %4.2f, \"Temp(°C)\": %4.2f, \"DP(°C)\": %4.2f, \"HI(°C)\": %4.2f}", h, t, dp, hi));
+
                 lastMillisVars=millis();
     }
 

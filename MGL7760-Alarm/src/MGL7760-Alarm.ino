@@ -5,7 +5,8 @@
  * Date: 10-01-2020 
  */
 
-#include <Adafruit_DHT.h>
+//#include <Adafruit_DHT.h>
+#include <Adafruit_DHT_Particle.h>
 
 #include <GlobalVariables.h>
 #include <GlobalFunctions.h>
