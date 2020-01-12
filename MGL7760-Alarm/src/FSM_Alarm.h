@@ -25,26 +25,40 @@ void Alarm_OffStt_Enter()
 
 void Alarm_OffStt_Update()
 {
-    Serial.printlnf("\n Count Value: %d", count++);
-    delay(500);
+    if (alarmStatus == 0)
+    {
+        Serial.printlnf("\n Alarm OFF: %d", count++);
+        delay(1000);
+    }else{
+        FSM_Alarm.transitionTo(Alarm_ON_STT);
+    }
+
 }
 void Alarm_OffStt_Exit()
 {
 	Serial.println(" Exit Alarm_OffStt ...");
+    count=0;
 }
 
 void Alarm_OnStt_Enter()
 {
-	sprintf(Alarm_CurrentStt, "Alarm_On_STT");
-	Serial.println(" Enter Alarm_OnStt ...");
-
+        sprintf(Alarm_CurrentStt, "Alarm_On_STT");
+	    Serial.println(" Enter Alarm_OnStt ...");
 }
 
 void Alarm_OnStt_Update()
 {
 
+    if (alarmStatus == 1)
+    {    
+        Serial.printlnf("\n Alarm On: %d", count++);
+        delay(1000);
+    }else{
+        FSM_Alarm.transitionTo(Alarm_OFF_STT);
+    }
 }
 void Alarm_OnStt_Exit()
 {
 	Serial.println(" Exit Alarm_OnStt ...");
+    count=0;
 }

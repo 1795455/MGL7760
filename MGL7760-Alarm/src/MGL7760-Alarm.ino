@@ -1,12 +1,13 @@
 /*
  * Project MGL7760-Alarm
- * Description:
- * Author:
- * Date:
+ * Description: 
+ * Author: Hugo Hernan Ruiz 
+ * Date: 10-01-2020 
  */
 
 
 #include <GlobalVariables.h>
+#include <GlobalFunctions.h>
 
 #include <FiniteStateMachine.h>
 #include <FSM_Alarm.h>
@@ -15,7 +16,8 @@
 
 // setup() runs once, when the device is first turned on.
 void setup() {
-  // Put initialization like pinMode and begin functions here.
+  
+  Particle.function("Alarm_OnOff", Alarm_OnOff);
 
 }
 
@@ -25,3 +27,5 @@ void loop() {
   FSM_Alarm.update();
 
 }
+
+
