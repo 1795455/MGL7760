@@ -5,12 +5,15 @@
  * Date: 10-01-2020 
  */
 
+#include <Adafruit_DHT.h>
 
 #include <GlobalVariables.h>
 #include <GlobalFunctions.h>
 
 #include <FiniteStateMachine.h>
 #include <FSM_Alarm.h>
+
+#include <FSM_Vars.h>
 
 // test Git Synchronization 
 
@@ -21,8 +24,15 @@ void setup() {
   pinMode(ledPin, OUTPUT);      // declare LED as output
   
   Serial.begin(9600);
- 
+ 	dht.begin();
+
   Particle.function("Alarm_OnOff", Alarm_OnOff);
+  Particle.function("Vars_OnOff", Vars_OnOff);
+
+  Particle.variable("varStatus", varStatus);
+  Particle.variable("alarmStatus", alarmStatus);
+
+
 
 }
 
@@ -32,6 +42,7 @@ void loop() {
   //val = digitalRead(inputPin);  // read input value
 
   FSM_Alarm.update();
+  FSM_Vars.update();
 
 }
 
