@@ -55,18 +55,18 @@ void FSM_Vars_OnStt_Enter()
 void FSM_Vars_OnStt_Update()
 {
 
-    if (millis()-lastMillisVars >= 5000){
+    if (millis()-lastMillisVars >= 10000){
             
             //Serial.printlnf("\n FSM_Vars On: %d", count++);lastMillis=millis();
 
             // Reading temperature or humidity takes about 250 milliseconds!
             // Sensor readings may also be up to 2 seconds 'old' (its a 
             // very slow sensor)
-                float h = dht.getHumidity();
+                h = dht.getHumidity();
             // Read temperature as Celsius
-                float t = dht.getTempCelcius();
+                t = dht.getTempCelcius();
             // Read temperature as Farenheit
-                float f = dht.getTempFarenheit();
+                f = dht.getTempFarenheit();
             
             // Check if any reads failed and exit early (to try again).
                 if (isnan(h) || isnan(t) || isnan(f)) {
@@ -80,9 +80,9 @@ void FSM_Vars_OnStt_Update()
             // Must send in temp in Fahrenheit!
             
            
-                float hi = dht.getHeatIndex();
-                float dp = dht.getDewPoint();
-                float k = dht.getTempKelvin();
+                hi = dht.getHeatIndex();
+                dp = dht.getDewPoint();
+                k = dht.getTempKelvin();
 
                 Serial.print(" Humid: "); 
                 Serial.print(h);
@@ -102,8 +102,8 @@ void FSM_Vars_OnStt_Update()
                 Serial.println(" *C");
                 Serial.println(Time.timeStr());        
 
-                Particle.publish("readings", String::format("{\"Hum(\%)\": %4.2f, \"Temp(°C)\": %4.2f, \"DP(°C)\": %4.2f, \"HI(°C)\": %4.2f}", h, t, dp, hi));
-
+                //Particle.publish("readings", String::format("{\"Hum(\%)\": %4.2f, \"Temp(°C)\": %4.2f, \"DP(°C)\": %4.2f, \"HI(°C)\": %4.2f}", h, t, dp, hi));
+                 Particle.publish("readings", String::format("{\"Humidity\": %4.2f, \"Temp_Celsius\": %4.2f, \"DP\": %4.2f, \"HI\": %4.2f}", h, t, dp, hi));
                 lastMillisVars=millis();
     }
 

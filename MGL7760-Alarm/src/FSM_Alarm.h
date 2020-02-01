@@ -70,6 +70,9 @@ void Alarm_OnStt_Update()
                 Serial.println("Motion detected!");
                 // We only want to print on the output change, not state
                 pirState = HIGH;
+
+                //Particle.publish("alarm_event", String::format("{\"Hum(\%)\": %4.2f, \"Temp(°C)\": %4.2f, \"DP(°C)\": %4.2f, \"HI(°C)\": %4.2f}", h, t, dp, hi));
+                 Particle.publish("alarm_event", String::format("{\"Humidity\": %4.2f, \"Temp_Celsius\": %4.2f, \"DP\": %4.2f, \"HI\": %4.2f}", h, t, dp, hi));
             }
         } else {
             digitalWrite(ledPin, LOW); // turn LED OFF

@@ -15,3 +15,17 @@ int val = 0;                    // variable for reading the pin status
 int varStatus=0;
 
 DHT dht(DHTPin, DHTTYPE);
+
+
+//Temperature variables
+//---------------------------------
+float h;
+float t;
+float f;
+
+float hi;
+float dp;
+float k;
+
+
+// cd C:/Users/hhrui/OneDrive/Documents/GitHub/MGL7760/MGL7760-Alarm
