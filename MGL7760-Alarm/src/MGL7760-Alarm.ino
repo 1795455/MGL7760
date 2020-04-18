@@ -1,8 +1,8 @@
 /*
  * Project MGL7760-Alarm
- * Description: 
+ * Description: TP3
  * Author: Hugo Hernan Ruiz 
- * Date: 10-01-2020 
+ * Date: 17-04-2020 
  */
 
 //#include <Adafruit_DHT.h>
@@ -29,7 +29,7 @@ void setup() {
 
   Particle.function("Alarm_OnOff", Alarm_OnOff);
   Particle.function("Vars_OnOff", Vars_OnOff);
-
+  
   Particle.variable("varStatus", varStatus);
   Particle.variable("alarmStatus", alarmStatus);
 
